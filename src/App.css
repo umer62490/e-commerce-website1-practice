@@ -1,38 +1,368 @@
-.App {
-  text-align: center;
+html, body {
+  height: 90%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: linear-gradient(to bottom right, #ffae6d 0%, #ffae6d 20%, #ffe6d1 40%, #ffbb85 60%, #ffd1a3 80%, #ffd1a3 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Ensure body takes at least full viewport height */
+  background-attachment: fixed; /* Ensure the background stays fixed when scrolling */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.background-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh; /* Ensure wrapper takes full viewport height */
+}
+
+.centered-box {
+  width: 90%; /* Adjust as needed */
+  height: 90%; /* Adjust as needed */
+  background-color: #ffe5b4; /* Darker orange color */
+  border: 5px solid white; /* Thick white border */
+  overflow-y: auto; /* Vertical scrolling */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5rem;
+  position: relative;
+}
+
+/* Scrollbar Track */
+.centered-box::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 7rem; /* Match the box's border-radius */
+  margin-bottom: 3rem;
+  margin-top: 4rem;
+}
+
+/* Scrollbar Thumb */
+.centered-box::-webkit-scrollbar-thumb {
+  background-color: orange;
+  border-radius: 7rem; /* Match the box's border-radius */
+  border: 2px solid orange; /* Optional: Add border to thumb */
+  min-height: 10px; /* Reduce the minimum height to make the scrollbar thumb appear smaller */
+  margin-left: -5px; /* Move the scrollbar thumb slightly to the left */
+}
+
+/* Scrollbar Width */
+.centered-box::-webkit-scrollbar {
+  width: 15px; /* Adjust the scrollbar width */
+  padding-bottom: 2rem;
+}
+
+.main-logo {
+  position: absolute;
+  top: 2rem; /* Position close to the top */
+  left: 8rem; /* Position close to the left */
+}
+
+.main-logo h1 {
+  margin: 0; /* Remove any default margin */
+  font-size: 2rem; /* Adjust the font size as needed */
+}
+.header-options {
+  position: fixed;
+  top: 5rem; /* Adjust as needed to position below the logo */
+  right: 35rem; /* Position to the right */
+  display: flex;
+  gap: 2rem; /* Space between the options */
+  z-index: 1000;
+}
+
+.header-options a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.header-options a:hover {
+  background-color: orange;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.add-to-cart-icon .cart-icon{
+  position: absolute;
+  top: 0rem; /* Adjust as needed to position below the logo */
+  right: -25rem; /* Position to the right */
+
+}
+.box-in-center-box {
+  width: 90%; /* Adjust as needed */
+  height: 40%; /* Adjust as needed */
+  background-image: url('./assets/box-in-center-box.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 3rem;
+  
+  border: 5px solid orange; /* Set border color to orange */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center; /* Center the box vertically */
+  margin:  0 auto; /* Center the box horizontally */
+  margin-top: 10px; /* Optional: Add some space from the top */
+  align-self: flex-start;
+  margin-top: 6rem;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.box-in-center-box h1{
+  position: absolute;
+  top:9rem;
+
+}
+
+.add-to-cart-icon {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  cursor: pointer;
+}
+
+.cart-icon {
+  width: 30px;  /* Adjust the size as needed */
+  height: 30px;
+}
+#change-product {
+ position: absolute;
+ top:10rem;
+ left:85rem;
+}
+
+
+
+.box-on-center-box {
+  width: 60%; /* Adjust as needed */
+  height: 50%; /* Adjust as needed */
+  background-color: rgba(255, 229, 180, 0.8); /* #ffe5b4 color with transparency */
+  border-radius: 2rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -40%); /* Adjust for proper centering */
+  
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Black shadow at the bottom */
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.box-on-center-box:hover {
+  transform: translate(-50%, -40%) scale(1.05); /* Slightly enlarge the box on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+}
+.box-on-center-box .circle-on-center-box {
+  background-color: rgba(255, 229, 180, 0.8); /* #ffe5b4 color with transparency */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Black shadow at the bottom */
+  width: 30%; /* Adjust as needed, but make sure width and height are equal */
+  height: 70%; /* Adjust as needed, but make sure width and height are equal */
+  border-radius: 50%; /* Makes the element a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto; /* Center the circle in its container */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Black shadow at the bottom */
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+.box-on-center-box .circle-on-center-box:hover {
+ 
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+}
+.box-on-center-box .add-to-cart-btn{
+  position: absolute;
+  top: 18rem;
+  left: 42rem;
+  background-color: black;
+  color: orange;
+  width: 8rem;
+  height: 3rem;
+  border-radius: 1rem;
+
+}
+.box-on-center-box button:hover{
+  background-color: orange;
+  color: black;
+
+
+}
+.color-selection-container {
+  display: flex;
+  position: absolute;
+  justify-content: flex-end; /* Aligns the content to the right */
+  align-items: center; /* Vertically center the items */
+  gap: 10px; /* Space between "Color:" text and the color options */
+  margin-left: 42rem;
+  bottom: 17rem;
+}
+
+.color-selection-container p {
+  margin: 0; /* Remove any margin */
+}
+
+.color-options {
+  display: flex;
+  gap: 20px; /* Space between each color circle */
+}
+
+.color-circle {
+  display: inline-block;
+  width: 20px; /* Size of the circles */
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent; /* Border for the selected circle */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Basic shadow */
+}
+
+.color-circle:hover {
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); /* Shining shadow effect on hover */
+}
+
+.color-options input[type="radio"] {
+  display: none; /* Hide the radio button */
+}
+
+.color-options input[type="radio"]:checked + .color-circle {
+  border-color: #333; /* Highlight the selected circle */
+}
+
+.color-options input[type="radio"]:checked + .color-circle.red {
+  box-shadow: 0 0 20px rgba(255, 0, 0, 1); /* Dark red shining shadow */
+}
+
+.color-options input[type="radio"]:checked + .color-circle.blue {
+  box-shadow: 0 0 20px rgba(0, 0, 255, 1); /* Dark blue shining shadow */
+}
+
+.color-options input[type="radio"]:checked + .color-circle.black {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1); /* Dark black shining shadow */
+}
+
+.show-size p{
+  position: absolute;
+  top: 3rem;
+  right: 8rem;
+}
+
+
+.upper-size-button {
+  display: flex;
+  justify-content: space-between; /* Distributes buttons evenly */
+  margin-bottom: 0.5rem; /* Adds some space between upper and lower rows */
+  position: absolute;
+  right: -3rem;
+  bottom: 14rem;
+  top: 3rem;
+ 
+  
+}
+
+.lower-size-button {
+  display: flex;
+  justify-content: space-between; /* Distributes buttons evenly */
+  position: absolute;
+  right: -3rem;
+  top:7rem;
+  bottom: 14rem;
+ 
+  
+}
+
+.upper-size-button button, 
+.lower-size-button button {
+  width: 3rem; /* Adjust button width as needed */
+  height: 3rem; /* Adjust button height as needed */
+  background-color: black;
+  color: orange;
+  border-radius: 0.5rem; /* Rounded corners */
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: .5rem;
+ 
+}
+
+.upper-size-button button:hover, 
+.lower-size-button button:hover {
+  background-color: orange;
+  color: black;
+}
+
+.related-products h2{
+  position: relative; /* Ensures the position is relative to adjust its position */
+  top: 55rem; /* Adjust this value as needed */
+  left: 0; /* Ensure it's aligned correctly */
+  text-align: left; /* Aligns the heading to the left */
+  margin-bottom: 2rem; /* Add space below the heading */
+}
+
+.related-products {
+  padding: 1rem;
+  
+ 
+}
+
+
+.product-carts {
+  display: flex;
+  flex-wrap: wrap; /* Allows the carts to wrap to the next line */
+  gap: 1rem; /* Space between product carts */
+ justify-content: center;
+ position: relative;
+  top: 55rem; /* Adjust as needed */
+  
+}
+
+.product-cart {
+  background: linear-gradient(#f1a655, white, #f9d29d, #f1a655); /* Gradient background */
+  border: 1px solid #ddd; /* Border */
+  border-radius: 2rem; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  width: calc(25% - 1rem); /* Ensure 4 carts fit in one row */
+  text-align: center; /* Center align text and image */
+  padding: 1rem; /* Padding */
+  margin-bottom: 1rem;
+}
+
+.product-image {
+  width: 100%; /* Full width of the cart */
+  height: 13rem; /* Maintain aspect ratio */
+  border-radius: 18px; /* Rounded corners for the image */
+  margin-bottom: 0.5rem; /* Space below the image */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Black shadow at the bottom */
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.product-info {
+  padding: 0.5rem; /* Space inside the info section */
+}
+
+.product-description {
+  font-size: 0.9rem; /* Smaller font size for description */
+  color: #555; /* Dark grey color for text */
+  margin-bottom: 0.5rem; /* Space below description */
+}
+
+.product-price {
+  font-size: 1.2rem; /* Larger font size for price */
+  color: #333; /* Darker color for price */
+  font-weight: bold; /* Bold text for price */
 }
