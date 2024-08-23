@@ -3,6 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  overflow-x: hidden;
   
 }
 
@@ -14,10 +15,13 @@ body {
   background-attachment: fixed; /* Ensure the background stays fixed when scrolling */
 }
 
+/*---------------------------------shop page-----------------------------------------------*/
 .background-wrapper {
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden; /* Prevent horizontal overflow */
   height: 100vh; /* Ensure wrapper takes full viewport height */
 }
 
@@ -27,6 +31,7 @@ body {
   background-color: #ffe5b4; /* Darker orange color */
   border: 5px solid white; /* Thick white border */
   overflow-y: auto; /* Vertical scrolling */
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,12 +74,17 @@ body {
 }
 .header-options {
   position: fixed;
-  top: 5rem; /* Adjust as needed to position below the logo */
-  right: 35rem; /* Position to the right */
+  top: 4rem; /* Adjust as needed to position below the logo */
+  right: 25rem; /* Position to the right */
   display: flex;
   gap: 2rem; /* Space between the options */
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+
 
 .header-options a {
   text-decoration: none;
@@ -92,8 +102,8 @@ body {
 
 .add-to-cart-icon .cart-icon{
   position: absolute;
-  top: 0rem; /* Adjust as needed to position below the logo */
-  right: -25rem; /* Position to the right */
+  top: .5rem; /* Adjust as needed to position below the logo */
+  right: -15rem; /* Position to the right */
 
 }
 .box-in-center-box {
@@ -314,6 +324,7 @@ body {
 }
 
 .related-products {
+  margin-top: 35rem;
   padding: 1rem;
   
  
@@ -365,4 +376,748 @@ body {
   font-size: 1.2rem; /* Larger font size for price */
   color: #333; /* Darker color for price */
   font-weight: bold; /* Bold text for price */
+}
+.main-text {
+  display: flex;
+  flex-direction: row; /* Stack text and image vertically */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  text-align: center;
+  width: 100%; /* Full width */
+  height: 100vh; /* Full height of the viewport */
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.main-txt-word {
+  font-size: 5rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: orange;
+}
+
+.main-txt p {
+  font-size: 25px;
+  margin-right: 2rem;
+}
+
+.main-img img {
+  width: 30rem;
+  border-radius: 5rem;
+  margin-top: 2rem; /* Adds space between text and image */
+  margin-right: 5rem ;
+}
+
+
+.premium-message {
+  position: absolute;
+  margin-top: 50rem; /* Adjust this value to increase/decrease the space above */
+  text-align: center; /* Center the text */
+  font-size: 1.2rem; /* Adjust font size if needed */
+  color: #333; /* Adjust text color if needed */
+}
+
+.premium-message p{
+
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10rem;
+}
+
+.customer-satisfaction{
+
+  position: absolute;
+  margin-top: 140rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+ 
+
+}
+
+.customer-satisfaction h1{
+  
+  font-weight: bold;
+  
+}
+
+.customer-satisfaction p{
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.reviews-main-heading{
+ 
+  text-align: center;
+}
+
+.customer-satisfaction button{
+  transform:translateX(45rem);
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  background-color: black;
+  color: white;
+  width: 8rem;
+  height: 3rem;
+  font-weight: bold;
+  padding-bottom: 3rem;
+  border-radius: .5rem;
+  
+}
+
+.customer-satisfaction button:hover{
+  background-color: orange;
+  color: black;
+}
+.reviews-carts-container {
+  position: relative; /* So arrows position absolutely relative to this container */
+  overflow: hidden; /* Hide extra carts */
+  margin-top: 2rem;
+}
+
+.reviews-carts {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.5s ease; /* Smooth transition for scrolling */
+}
+
+.review-cart {
+  border: 1px solid #ddd; /* Border */
+  border-radius: 2rem; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  width: 33.33%; /* Ensure 3 carts fit in one row */
+  text-align: center; /* Center align text and image */
+  padding: 1rem; /* Padding */
+  margin-bottom: 1rem; /* Space at the bottom of each cart */
+  flex-shrink: 0; /* Prevent shrinking when scrolling */
+}
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 2; /* Make sure arrows are on top */
+}
+
+.arrow-left {
+  left: 0;
+}
+
+.arrow-right {
+  right: 0;
+}
+
+.trending-products{
+  position: absolute;
+  top: 110rem;
+}
+
+.trending-products h1{
+  font-weight: bolder;
+  margin-left: 5rem;
+}
+
+.products-display {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.product-card {
+  background: linear-gradient(#f1a655, white, #f9d29d, #f1a655); /* Gradient background */
+  border: 1px solid #ddd; /* Border */
+  border-radius: 2rem; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  width: calc(80% - 1rem); /* Increase width to make the cards larger */
+  height: 200px; /* Set a fixed height for the cards */
+  text-align: center; /* Center align text and image */
+  padding: 2rem; /* Increase padding to make the card content more spacious */
+  margin-bottom: 1rem; /* Spacing between cards */
+  margin-left: 2rem;
+}
+
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  
+}
+
+.pagination-buttons button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-buttons button.active {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+}
+
+.subscription-box {
+  position: absolute;
+  background-size: cover;
+  background-color: #f9f9f9; /* Light background */
+  top: 135rem;
+
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 1rem; /* Rounded corners */
+  padding: 5rem; /* Padding */
+  margin-top: 2rem; /* Space above */
+  margin-bottom: 7rem; /* Space below the box (adjust as needed) */
+  text-align: center; /* Center align text */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  overflow: hidden; /* Hide any overflowing content */
+ 
+}
+
+.subscription-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1; /* Background image should be behind the content */
+  
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
+  opacity: 0.5; /* Make the background image dull */
+  margin-bottom: 5rem;
+  
+}
+
+.subscription-content {
+  position: relative;
+  z-index: 2; /* Ensure the text and button are above the background */
+  color: #fff; /* White text color */
+ 
+}
+
+.subscription-content h2 {
+  font-size: 1.8rem;
+  color: #fff; /* White text color */
+}
+
+.subscription-content p {
+  font-size: 1.2rem;
+  color: #fff; /* White text color */
+  margin: 1rem 0; /* Space around text */
+}
+
+.subscribe-button {
+  background-color: #f1a655; /* Orange background */
+  color: white; /* White text */
+  border: none;
+  padding: 0.8rem 2rem; /* Padding */
+  font-size: 1.1rem;
+  border-radius: 0.5rem; /* Rounded button */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.subscribe-button:hover {
+  background-color: #e59430; /* Darker orange on hover */
+}
+
+
+.footer {
+  background-color: #333; /* Dark background */
+  color: #fff; /* White text */
+  padding: 2rem 0; /* Padding */
+  font-family: Arial, sans-serif; /* Font */
+  position: absolute;
+  top: 170rem;
+}
+
+.footer-content {
+  display: flex; /* Flexbox layout */
+  justify-content: space-around; /* Distribute space between sections */
+  flex-wrap: wrap; /* Wrap sections if needed */
+}
+
+.footer-section {
+  flex: 1; /* Flex grow */
+  max-width: 25%; /* Limit section width */
+  margin: 0 1rem; /* Margin between sections */
+}
+
+.footer-section h3 {
+  margin-bottom: 1rem; /* Space below headings */
+  font-size: 1.2rem; /* Heading font size */
+}
+
+.footer-section p {
+  margin-bottom: 1rem; /* Space below paragraphs */
+}
+
+.footer-section ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem; /* Space between list items */
+}
+
+.footer-section ul li a {
+  color: #f9d29d; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.footer-section form {
+  display: flex; /* Flexbox layout for form */
+  flex-direction: column; /* Stack input and button */
+}
+
+.footer-section input {
+  padding: 0.5rem; /* Padding inside input */
+  margin-bottom: 0.5rem; /* Space below input */
+  border: none; /* Remove border */
+  border-radius: 0.25rem; /* Rounded corners */
+}
+
+.footer-section button {
+  background-color: #f9d29d; /* Button background color */
+  color: #333; /* Button text color */
+  border: none; /* Remove border */
+  padding: 0.5rem; /* Button padding */
+  border-radius: 0.25rem; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+}
+
+.footer-section button:hover {
+  background-color: #f1a655; /* Darker background on hover */
+}
+
+.footer-bottom {
+  text-align: center; /* Center align text */
+  padding: 1rem 0; /* Padding */
+  border-top: 1px solid #444; /* Top border */
+  margin-top: 2rem; /* Space above footer bottom */
+}
+
+.footer-bottom p {
+  margin: 0; /* Remove margin */
+  font-size: 0.9rem; /* Font size */
+}
+
+.recent-posts {
+  flex: 1; /* Flex grow */
+  max-width: 25%; /* Limit section width */
+  margin: 0 1rem; /* Margin between sections */
+}
+
+.recent-posts h3 {
+  margin-bottom: 1rem; /* Space below heading */
+  font-size: 1.2rem; /* Heading font size */
+}
+
+.recent-posts .posts-list {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack posts vertically */
+}
+
+.recent-posts .post-item {
+  margin-bottom: 1rem; /* Space between posts */
+}
+
+.recent-posts .post-item h4 {
+  font-size: 1rem; /* Font size for post title */
+  margin: 0; /* Remove margin */
+}
+
+.recent-posts .post-item a {
+  color: #f9d29d; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.recent-posts .post-item a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.recent-posts .post-item p {
+  font-size: 0.9rem; /* Font size for post excerpt */
+  margin: 0.5rem 0 0; /* Space above and below */
+}
+
+.security-payment {
+  display: flex; /* Flexbox layout */
+  flex-wrap: wrap; /* Wrap items to new lines */
+  justify-content: space-between; /* Space between items */
+  margin: 2rem 0; /* Margin around the section */
+  position: absolute;
+  top: 10rem;
+}
+
+.security-badges, .payment-options {
+  flex: 1; /* Flex grow */
+  max-width: 48%; /* Limit width */
+  margin: 0 1rem; /* Margin between sections */
+}
+
+.security-badges h3, .payment-options h3 {
+  font-size: 1.2rem; /* Heading font size */
+  margin-bottom: 1rem; /* Space below heading */
+}
+
+.badges, .payment-logos {
+  display: flex; /* Flexbox layout */
+  gap: 1rem; /* Space between items */
+}
+
+.badges img, .payment-logos img {
+  height: 40px; /* Height for badges and logos */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.payment-logos img {
+  height: 30px; /* Slightly smaller for payment logos */
+}
+
+@media (max-width: 768px) {
+  .centered-box {
+    width: 95%; /* Slightly reduce the width for smaller screens */
+    height: 90%;
+  }
+
+  .main-logo {
+    top: 1rem; /* Adjust positioning for smaller screens */
+    left: 4rem;
+  }
+
+  .header-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-text, .subscription-box, .customer-satisfaction, .trending-products {
+    padding: 1rem; /* Reduce padding for smaller screens */
+  }
+
+  .product-card {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .pagination-buttons {
+    display: flex;
+    justify-content: center;
+  }
+}
+.search-bar {
+  margin: 20px 0;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.header-options > a, .header-options > .add-to-cart-icon, .header-options > .search-bar {
+  margin-right: 15px;
+}
+
+.search-bar input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/*----------------------------------------------------------------------------------------------------contact us page*/
+.form-container {
+  margin-top:8rem;
+  padding: 16px;
+  background: linear-gradient(135deg, #f1a655, white, #f9d29d, #f1a655);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30rem;
+}
+
+.form-control {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-input {
+  border-radius: 4px;
+  border: 1px solid orange;
+  padding: 8px;
+  width: 100%;
+}
+
+
+.form-input:focus {
+  border-color: orange;
+  box-shadow: 0 0 0 1px orange;
+}
+
+.form-textarea {
+  border-radius: 4px;
+  border: 1px solid orange;
+  padding: 8px;
+  width: 100%;
+  min-height: 100px;
+}
+
+
+.form-textarea:focus {
+  border-color: orange;
+  box-shadow: 0 0 0 1px orange;
+}
+
+.form-error {
+  color: #e53e3e;
+  margin-top: 4px;
+}
+
+.submit-button {
+  background-color: #f6ad55;
+  color: white;
+  border-radius: 4px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #ed8936;
+}
+
+.submit-button:focus {
+  box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.5);
+}
+
+
+/*-------------about us---------------------------------------------------------------------------*/
+.about-us-content {
+  position: absolute;
+  top: 10rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.company-history, .vision-mission-values {
+  margin-bottom: 2rem;
+}
+
+.company-history h2, .vision h2, .mission h2, .values h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.company-history p, .vision p, .mission p, .values ul {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.values ul {
+  list-style: none;
+  padding: 0;
+}
+
+.values li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Section Styling */
+.vision-mission-values {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.vision, .mission, .values {
+  margin-bottom: 2rem;
+}
+
+.vision h2, .mission h2, .values h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.vision p, .mission p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.values ul {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.values li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vision-mission-values {
+    flex-direction: column;
+  }
+  
+  .company-history, .vision-mission-values {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.team {
+  top: 60rem;
+  position: absolute;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.team h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.team-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.team-info h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.team-info p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Milestones Section Styles */
+.milestones {
+  position: absolute;
+  top: 110rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.milestones h2 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.milestone-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.milestone-photo {
+  width: 100px;
+  height: auto;
+  margin-right: 1rem;
+  border-radius: 8px;
+}
+
+.milestone-info {
+  max-width: 600px;
+}
+
+.milestone-info h3 {
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.milestone-info p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Highlights Section Styles */
+.highlights {
+  position: absolute;
+  margin-top: 2rem;
+  top: 85rem;
+  text-align: center;
+}
+
+.highlights h2 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.highlight-photo {
+  width: 100px;
+  height: auto;
+  margin-right: 1rem;
+  border-radius: 8px;
+}
+
+.highlight-info {
+  max-width: 600px;
+}
+
+.highlight-info h3 {
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.highlight-info p {
+  font-size: 1rem;
+  color: #666;
 }
