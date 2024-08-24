@@ -2,6 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+// Import routes from the `routes` folder
+const authRoutes = require('./routes/auth'); 
+
+// Import routes from the `src` folder (relative path to `backend`)
+const contactRoutes = require('../src/contactRoutes');
+const accountRoutes = require('../src/accountRoutes');
+
+dotenv.config();
 
 // Express app setup
 const app = express();
@@ -11,42 +21,21 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/E-commerce-website1', {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log('MongoDB connection error:', err));
 
-// Contact Schema and Model
-const contactSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    message: { type: String, required: true }
-});
+// Use routes
+app.use('/api/contact', contactRoutes);
+app.use('/api/account', accountRoutes);
+app.use('/api/auth', authRoutes);
 
-const Contact = mongoose.model('Contact', contactSchema);
-
-// Define routes
+// Define a default route
 app.get('/', (req, res) => {
     res.send('Server is running');
-});
-
-// POST route to handle contact form submissions
-app.post('/api/contact', async (req, res) => {
-    const { name, email, message } = req.body;
-
-    if (!name || !email || !message) {
-        return res.status(400).json({ error: 'All fields are required' });
-    }
-
-    try {
-        const newContact = new Contact({ name, email, message });
-        await newContact.save();
-        res.status(201).json({ message: 'Message submitted successfully' });
-    } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
-    }
 });
 
 // Port setup

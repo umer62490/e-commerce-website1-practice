@@ -1,13 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import UmerPhoto2 from './assets/umer photo 2.jpeg';
+import UmerPhoto3 from './assets/umer photo 3.jpeg';
+import UmerPhoto4 from './assets/umer photo 9.jpeg';
+import UmerPhoto5 from './assets/umer photo 5.jpeg';
+import UmerPhoto6 from './assets/umer photo 6.jpeg';
+import UmerPhoto7 from './assets/umer photo 10.jpeg';
+import UmerPhoto8 from './assets/umer photo 11.jpeg';
 import Amex from './assets/amex.png';
 import Mastercard from './assets/mastercard.png';
 import Paypal from './assets/paypal.png';
 import Visa from './assets/visa card.png';
-import SSL from  './assets/ssl badge.jpeg';
+import SSL from './assets/ssl badge.jpeg';
 import SecurePayment from './assets/secure payment.jpeg';
 import PaymentGateway from './assets/payment gateway.png';
 import './App.css'; 
+
+const teamPhotos = [
+  // Add URLs for your photos here
+  
+  UmerPhoto2,
+  UmerPhoto3,
+  UmerPhoto4,
+  UmerPhoto5,
+  UmerPhoto6,
+  UmerPhoto7,
+  UmerPhoto8,
+  
+];
+
+function TeamCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % teamPhotos.length);
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="team-carousel">
+      <img src={teamPhotos[currentIndex]} alt="Team Member" className="team-photo" />
+    </div>
+  );
+}
 
 function AboutUsPage() {
   return (
@@ -22,14 +60,13 @@ function AboutUsPage() {
           <Link to="/contact-us">Contact Us</Link>
           <Link to="/about-us">About Us</Link>
           <Link to="/account">Account</Link>
-          
         </div>
 
         <div className="about-us-content">
           <section className="company-history">
             <h2>Our History</h2>
             <p>
-              ShoeShop was founded in [Year] with a passion for providing high-quality footwear that combines style and comfort. Over the years, we have grown from a small boutique into a leading eCommerce platform, serving customers worldwide with our diverse range of products.
+              ShoeShop was founded in 2024 with a passion for providing high-quality footwear that combines style and comfort. Over the years, we have grown from a small boutique into a leading eCommerce platform, serving customers worldwide with our diverse range of products.
             </p>
           </section>
 
@@ -59,127 +96,88 @@ function AboutUsPage() {
               </ul>
             </div>
           </section>
+        </div>
+
+        <section className="team">
+          <h2>Meet the Team</h2>
+          <TeamCarousel />
+          <div className="team-info">
+            <h3>Muhammad Umar</h3>
+            <p><span>Role:</span> I'm developing this website where I apply React.js with Redux for frontend, and Bootstrap with Chakra UI for styling. For the backend, I use Node.js, Express.js, and MongoDB for the database.</p>
           </div>
+        </section>
 
-          <section className="team">
-            <h2>Meet the Team</h2>
-            <div className="team-member">
-              {/*<img src={TeamMemberPhoto} alt="Your Name" className="team-photo" />*/}
-              <div className="team-info">
-                <h3>Your Name</h3>
-                <p>Role: Your Role</p>
-              </div>
-            </div>
-            {/* Add more team members here */}
-          </section>
-
-          <section className="milestones">
-            <h2>Our Milestones</h2>
-            <div className="milestone-item">
-              {/*<img src={MilestoneImage} alt="Milestone" className="milestone-photo" />*/}
-              <div className="milestone-info">
-                <h3>Milestone Title</h3>
-                <p>Details about the milestone, such as achievements, awards, or significant events in the company's history.</p>
-              </div>
-            </div>
-            {/* Add more milestones here */}
-          </section>
-
-          {/* Events/Store Highlights Section */}
-          <section className="highlights">
-            <h2>Company Highlights</h2>
-            <div className="highlight-item">
-             {/*} <img src={EventImage} alt="Event" className="highlight-photo" />*/}
-              <div className="highlight-info">
-                <h3>Event Title</h3>
-                <p>Details about the event, including what it was, when it took place, and any notable outcomes.</p>
-              </div>
-            </div>
-            <div className="highlight-item">
-              {/*<img src={StorePhoto} alt="Store" className="highlight-photo" />*/}
-              <div className="highlight-info">
-                <h3>Store Highlight</h3>
-                <p>Details about the store, including features, special offers, or unique aspects of the store's design and layout.</p>
-              </div>
-            </div>
-            {/* Add more highlights here */}
-          </section>
-
-        <div className="footer">
-  <div className="footer-content">
-  <div className="recent-posts">
-      <h3>Recent Blog Posts</h3>
-      <div className="posts-list">
-        <div className="post-item">
-          <h4><a href="/blog/post1">Latest Trends in Footwear Fashion</a></h4>
-          <p>A brief overview of the latest trends in the world of footwear. Discover what's new and what's coming next.</p>
-        </div>
-        <div className="post-item">
-          <h4><a href="/blog/post2">Our Journey to Sustainability</a></h4>
-          <p>Learn about our efforts and initiatives towards creating a more sustainable and eco-friendly brand.</p>
-        </div>
        
-      </div>
-    </div>
-    <div className="footer-section">
-      <h3>About Us</h3>
-      <p>Learn more about our company, mission, and values. We are dedicated to providing top-quality shoes and exceptional service.</p>
-      <Link to="/about-us">Read More</Link>
-    </div>
-
-    <div className="footer-section">
-      <h3>Customer Service</h3>
-      <ul>
-        <li><Link to="/contact-us">Contact Us</Link></li>
-        <li><Link to="/returns">Returns & Exchanges</Link></li>
-        <li><Link to="/shipping">Shipping Information</Link></li>
-      </ul>
-    </div>
-
-    <div className="footer-section">
-      <h3>Follow Us</h3>
-      <ul className="social-media">
-        <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-        <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div className="security-payment">
-          <div className="security-badges">
-            <h3>Secure Checkout</h3>
-            <div className="badges">
-              <img src={SSL} alt="SSL Secure" />
-              <img src={PaymentGateway} alt="Payment Gateway" />
-              <img src={SecurePayment} alt="Secure Payment" />
+        <div className="footer" style={{marginTop:'-40rem'}}>
+          <div className="footer-content">
+            <div className="recent-posts">
+              <h3>Recent Blog Posts</h3>
+              <div className="posts-list">
+                <div className="post-item">
+                  <h4><a href="/blog/post1">Latest Trends in Footwear Fashion</a></h4>
+                  <p>A brief overview of the latest trends in the world of footwear. Discover what's new and what's coming next.</p>
+                </div>
+                <div className="post-item">
+                  <h4><a href="/blog/post2">Our Journey to Sustainability</a></h4>
+                  <p>Learn about our efforts and initiatives towards creating a more sustainable and eco-friendly brand.</p>
+                </div>
+              </div>
             </div>
-          </div>
+            <div className="footer-section">
+              <h3>About Us</h3>
+              <p>Learn more about our company, mission, and values. We are dedicated to providing top-quality shoes and exceptional service.</p>
+              <Link to="/about-us">Read More</Link>
+            </div>
 
-          <div className="payment-options">
-            <h3>Accepted Payment Methods</h3>
-            <div className="payment-logos">
-              <img src={Visa} alt="Visa" />
-              <img src={Mastercard} alt="MasterCard" />
-              <img src={Paypal} alt="PayPal" />
-              <img src={Amex} alt="American Express" />
+            <div className="footer-section">
+              <h3>Customer Service</h3>
+              <ul>
+                <li><Link to="/contact-us">Contact Us</Link></li>
+                <li><Link to="/returns">Returns & Exchanges</Link></li>
+                <li><Link to="/shipping">Shipping Information</Link></li>
+              </ul>
+            </div>
+
+            <div className="footer-section">
+              <h3>Follow Us</h3>
+              <ul className="social-media">
+                <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              </ul>
+            </div>
+
+            <div className="security-payment">
+              <div className="security-badges">
+                <h3>Secure Checkout</h3>
+                <div className="badges">
+                  <img src={SSL} alt="SSL Secure" />
+                  <img src={PaymentGateway} alt="Payment Gateway" />
+                  <img src={SecurePayment} alt="Secure Payment" />
+                </div>
+              </div>
+
+              <div className="payment-options">
+                <h3>Accepted Payment Methods</h3>
+                <div className="payment-logos">
+                  <img src={Visa} alt="Visa" />
+                  <img src={Mastercard} alt="MasterCard" />
+                  <img src={Paypal} alt="PayPal" />
+                  <img src={Amex} alt="American Express" />
+                </div>
+              </div>
+            </div>
+
+            <div className="footer-section">
+              <h3>Newsletter</h3>
+              <p>Subscribe to our newsletter to get the latest updates and offers directly to your inbox.</p>
+              <form>
+                <input type="email" placeholder="Enter your email" />
+                <button type="submit">Subscribe</button>
+              </form>
             </div>
           </div>
         </div>
-
-    <div className="footer-section">
-      <h3>Newsletter</h3>
-      <p>Subscribe to our newsletter to get the latest updates and offers directly to your inbox.</p>
-      <form>
-        <input type="email" placeholder="Enter your email" />
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
-  </div>
-
-  <div className="footer-bottom">
-    <p>&copy; {new Date().getFullYear()} ShoeShop. All rights reserved.</p>
-  </div>
-</div>
       </div>
     </div>
   );

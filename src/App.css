@@ -922,30 +922,36 @@ body {
   margin-bottom: 2rem;
 }
 
-.company-history h2, .vision h2, .mission h2, .values h2 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-  font-weight: 600;
+.company-history h2, 
+.vision h2, 
+.mission h2, 
+.values h2,
+.team h2 {
+  font-size: 4.5rem !important;
+  color: #333 !important;
+  margin-bottom: 1rem !important;
+  font-weight: 700 !important;
 }
-
-.company-history p, .vision p, .mission p, .values ul {
-  font-size: 1.125rem;
+.company-history p, .vision p, .mission p {
+  font-size: 25px;
   line-height: 1.6;
   color: #555;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .values ul {
+  position: absolute;
   list-style: none;
   padding: 0;
+  left: -13rem;
+  text-align: left;
+  margin-left: 0;
 }
 
 .values li {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  line-height: 1.6;
+  max-width: 150rem; /* Adjust as needed to fit your layout */
+  text-align: center;
 }
 
 /* Section Styling */
@@ -959,18 +965,6 @@ body {
   margin-bottom: 2rem;
 }
 
-.vision h2, .mission h2, .values h2 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.vision p, .mission p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-}
 
 .values ul {
   padding: 0;
@@ -978,12 +972,25 @@ body {
   text-align: left;
   max-width: 600px;
   margin: 0 auto;
+  font-size: 40px;
 }
 
 .values li {
+  width: 100rem;
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 25px;
 }
+
+.team {
+  position: absolute;
+  
+}
+
+.team .team-member .team-info h3 {
+  font-size: 40px; /* Increase the value to make the text larger */
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1004,6 +1011,7 @@ body {
 }
 
 .team h2 {
+  margin-top: 25rem;
   font-size: 2.5rem;
   color: #333;
   margin-bottom: 1.5rem;
@@ -1032,92 +1040,107 @@ body {
 }
 
 .team-info p {
-  font-size: 1rem;
+  font-size: 25px;
+  line-height: 1.6;
+  color: #555;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-info p span{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.team-carousel {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.team-photo {
+  width: 200px; /* Set a fixed width */
+  height: 200px; /* Set a fixed height */
+  object-fit: cover; /* Ensure images cover the dimensions without distortion */
+  transition: opacity 1s ease-in-out;
+}
+
+.form-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  max-width: 100%;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
   color: #555;
 }
 
-/* Milestones Section Styles */
-.milestones {
-  position: absolute;
-  top: 110rem;
-  margin-top: 2rem;
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: black;
+}
+
+p {
   text-align: center;
-}
-
-.milestones h2 {
-  font-size: 2.5rem;
-  color: #333;
-}
-
-.milestone-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 1rem;
-}
-
-.milestone-photo {
-  width: 100px;
-  height: auto;
-  margin-right: 1rem;
-  border-radius: 8px;
-}
-
-.milestone-info {
-  max-width: 600px;
-}
-
-.milestone-info h3 {
-  font-size: 1.5rem;
-  color: #444;
-}
-
-.milestone-info p {
-  font-size: 1rem;
+  margin-top: 20px;
   color: #666;
 }
 
-/* Highlights Section Styles */
-.highlights {
-  position: absolute;
-  margin-top: 2rem;
-  top: 85rem;
-  text-align: center;
+.toggle-link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.highlights h2 {
-  font-size: 2.5rem;
-  color: #333;
+.toggle-link:hover {
+  color: #0056b3;
 }
 
-.highlight-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 1rem;
+.signup-form,
+.login-form {
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.highlight-photo {
-  width: 100px;
-  height: auto;
-  margin-right: 1rem;
-  border-radius: 8px;
-}
-
-.highlight-info {
-  max-width: 600px;
-}
-
-.highlight-info h3 {
-  font-size: 1.5rem;
-  color: #444;
-}
-
-.highlight-info p {
-  font-size: 1rem;
-  color: #666;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
