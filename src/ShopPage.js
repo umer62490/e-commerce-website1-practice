@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';  // Add useEffect here
-
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';  // Import the SearchBar component
 import Amex from './assets/amex.png';
@@ -14,6 +13,11 @@ import iconName from './assets/shopping-cart.png';
 import LeftArrow from './assets/left-arrow.png';
 import RightArrow from './assets/right-arrow.png';
 import Shoee1 from './assets/shoee1.png';
+import Shoee2 from './assets/shoee2.png';
+import Shoee3 from './assets/shoee3.png';
+import Shoee4 from './assets/shoee4.png';
+import Shoee5 from './assets/shoee5.png';
+import Shoee6 from './assets/shoee6.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'; // Assuming your CSS is in App.css
 
@@ -21,14 +25,23 @@ function ShopPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(''); // Default no color selected
+
+ 
 
   useEffect(() => {
     // Fetch products from an API or other source
     const fetchProducts = async () => {
       // Example: Replace with actual API call or static data
       const productList = [
-        { id: 1, name: 'Red Shoe', description: 'A stylish red shoe', price: 99.99, image: Shoee1 },
-        { id: 2, name: 'Blue Shoe', description: 'A comfortable blue shoe', price: 89.99, image: Shoee1 },
+        { id: 1, name: 'brown Shoe', price: 99.99, image: Shoee1, colors: ['red', 'blue', 'black'] },
+        { id: 2, name: 'red Shoe', price: 89.99, image: Shoee2, colors: ['red', 'blue', 'black'] },
+        { id: 3, name: 'white Shoe', price: 89.99, image: Shoee3, colors: ['red', 'blue', 'black'] },
+        { id: 4, name: 'blue Shoe', price: 89.99, image: Shoee4, colors: ['red', 'blue', 'black'] },
+        { id: 5, name: 'green Shoe', price: 89.99, image: Shoee5, colors: ['red', 'blue', 'black'] },
+        { id: 6, name: 'black Shoe', price: 89.99, image: Shoee6, colors: ['red', 'blue', 'black'] },
+      
         // Add more products here
       ];
       setProducts(productList);
@@ -48,6 +61,27 @@ function ShopPage() {
     setSearchQuery(query);
   };
 
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    setSelectedColor(product.colors[0]); // Set the first available color as the default
+  };
+
+  const handleColorChange = (event) => {
+    setSelectedColor(event.target.value);
+  };
+
+  const getColorImage = (color, product) => {
+    switch (color) {
+      case 'red':
+        return Shoee2; // Assuming Shoee2 is the red shoe image
+      case 'blue':
+        return Shoee4; // Assuming Shoee4 is the blue shoe image
+      case 'black':
+        return Shoee6; // Assuming Shoee6 is the black shoe image
+      default:
+        return product.image;
+    }
+  };
 
   return (
     <div className="background-wrapper">
@@ -79,21 +113,21 @@ function ShopPage() {
 
           <div className='box-on-center-box'>
             <div className='box-on-center-box-ColorSelection'>
-              <div className="color-selection-container">
-                <p style={{ marginBottom: '.5rem' }}>Color :</p>
+            <div className="color-selection-container">
+             <p style={{ marginBottom: '.5rem' }}>Color :</p>
                 <div className="color-options">
-                  <label>
-                    <input type="radio" name="color" value="red" />
-                    <span className="color-circle" style={{ backgroundColor: 'red' }}></span>
-                  </label>
-                  <label>
-                    <input type="radio" name="color" value="blue" />
-                    <span className="color-circle" style={{ backgroundColor: 'blue' }}></span>
-                  </label>
-                  <label>
-                    <input type="radio" name="color" value="black" />
-                    <span className="color-circle" style={{ backgroundColor: 'black' }}></span>
-                  </label>
+                  {selectedProduct && selectedProduct.colors.map(color => (
+                    <label key={color}>
+                      <input
+                        type="radio"
+                        name="color"
+                        value={color}
+                        checked={selectedColor === color}
+                        onChange={handleColorChange}
+                      />
+                      <span className="color-circle" style={{ backgroundColor: color }}></span>
+                    </label>
+                  ))}
                 </div>
                 <div className="show-size">
                   <p>Size :</p>
@@ -114,33 +148,37 @@ function ShopPage() {
               </div>
             </div>
             <button className='add-to-cart-btn'>Add to Cart</button>
-            <div className='circle-on-center-box'></div>
+            <div className='circle-on-center-box'>
+            {selectedProduct ? (
+                <img src={getColorImage(selectedColor, selectedProduct)} alt={selectedProduct.name} className="product-image" />
+              ) : (
+                <p>Select a product</p>
+              )}
+            </div>
+           
+            
+             {selectedProduct && (
+              <div className="bottom-left-boxes">
+                <div className="small-box red-shoes" onClick={() => setSelectedColor('red')}></div>
+                <div className="small-box blue-shoes" onClick={() => setSelectedColor('blue')}></div>
+                <div className="small-box black-shoes" onClick={() => setSelectedColor('black')}></div>
+              </div>
+            )}
           </div>
           <div className='related-products'>
             <h2>Related Products</h2>
             <div className='product-carts'>
             {filteredProducts.length > 0 ? (
                 filteredProducts.map(product => (
-                  <div key={product.id} className='product-cart'>
-                    <img src={product.image} alt="Product" className='product-image' />
-                    <div className='product-info'>
-                      <p className='product-description'>{product.description}</p>
-                      <p className='product-price'>${product.price.toFixed(2)}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No products found.</p>
-              )}
-           
-
-           {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                  <div key={product.id} className='product-cart'>
-                    <img src={product.image} alt="Product" className='product-image' />
-                    <div className='product-info'>
-                      <p className='product-description'>{product.description}</p>
-                      <p className='product-price'>${product.price.toFixed(2)}</p>
+                  <div
+                    key={product.id}
+                    className="product-cart"
+                    onClick={() => handleProductClick(product)}
+                  >
+                    <img src={product.image} alt={product.name} className="product-image" />
+                    <div className="product-info">
+                      <p className="product-description">{product.name}</p>
+                      <p className="product-price">${product.price.toFixed(2)}</p>
                     </div>
                   </div>
                 ))
@@ -148,82 +186,10 @@ function ShopPage() {
                 <p>No products found.</p>
               )}
             
-
-            {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                  <div key={product.id} className='product-cart'>
-                    <img src={product.image} alt="Product" className='product-image' />
-                    <div className='product-info'>
-                      <p className='product-description'>{product.description}</p>
-                      <p className='product-price'>${product.price.toFixed(2)}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No products found.</p>
-              )}
-          
-          {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                  <div key={product.id} className='product-cart'>
-                    <img src={product.image} alt="Product" className='product-image' />
-                    <div className='product-info'>
-                      <p className='product-description'>{product.description}</p>
-                      <p className='product-price'>${product.price.toFixed(2)}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No products found.</p>
-              )}
-          
-
-          {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                  <div key={product.id} className='product-cart'>
-                    <img src={product.image} alt="Product" className='product-image' />
-                    <div className='product-info'>
-                      <p className='product-description'>{product.description}</p>
-                      <p className='product-price'>${product.price.toFixed(2)}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No products found.</p>
-              )}
-            
-
-            {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                  <div key={product.id} className='product-cart'>
-                    <img src={product.image} alt="Product" className='product-image' />
-                    <div className='product-info'>
-                      <p className='product-description'>{product.description}</p>
-                      <p className='product-price'>${product.price.toFixed(2)}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No products found.</p>
-              )}
-            
-
-            {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                  <div key={product.id} className='product-cart'>
-                    <img src={product.image} alt="Product" className='product-image' />
-                    <div className='product-info'>
-                      <p className='product-description'>{product.description}</p>
-                      <p className='product-price'>${product.price.toFixed(2)}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No products found.</p>
-              )}
-            
+              
             </div>
           </div>
+    
         </div>
 
         <div className="footer">

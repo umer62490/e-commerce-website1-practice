@@ -15,6 +15,7 @@ body {
   background-attachment: fixed; /* Ensure the background stays fixed when scrolling */
 }
 
+
 /*---------------------------------shop page-----------------------------------------------*/
 .background-wrapper {
   display: flex;
@@ -265,6 +266,36 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 1); /* Dark black shining shadow */
 }
 
+.bottom-left-boxes {
+  position: absolute;
+  bottom: 60px; /* Adjust the positioning to your preference */
+  left: 60px; /* Adjust the positioning to your preference */
+  display: flex;
+  gap: 20px; /* Space between the boxes */
+}
+
+.small-box {
+  width: 50px; /* Adjust the size to your preference */
+  height: 50px; /* Adjust the size to your preference */
+  background-size: cover; /* Ensure the image covers the entire box */
+  background-position: center; /* Center the image within the box */
+  border-radius: 10px; /* Optional: Rounded corners */
+}
+
+.red-shoes {
+  background-image: url('./assets/shoee2.png'); /* Path to red shoes image */
+}
+
+.blue-shoes {
+  background-image: url('./assets/shoee4.png'); /* Path to blue shoes image */
+}
+
+.black-shoes {
+  background-image: url('./assets/shoee6.png'); /* Path to black shoes image */
+}
+
+
+
 .show-size p{
   position: absolute;
   top: 3rem;
@@ -317,10 +348,11 @@ body {
 
 .related-products h2{
   position: relative; /* Ensures the position is relative to adjust its position */
-  top: 55rem; /* Adjust this value as needed */
+  top: 70rem; /* Adjust this value as needed */
   left: 0; /* Ensure it's aligned correctly */
   text-align: left; /* Aligns the heading to the left */
   margin-bottom: 2rem; /* Add space below the heading */
+  
 }
 
 .related-products {
@@ -332,12 +364,11 @@ body {
 
 
 .product-carts {
-  display: flex;
-  flex-wrap: wrap; /* Allows the carts to wrap to the next line */
-  gap: 1rem; /* Space between product carts */
- justify-content: center;
- position: relative;
-  top: 55rem; /* Adjust as needed */
+  display: flex; /* Flexbox layout for easy alignment */
+  flex-wrap: wrap; /* Allow wrapping to multiple lines */
+  gap: 4rem; /* Space between product boxes */
+  justify-content: space-around; /* Evenly distribute space around the items */
+  margin-top: 72rem;
   
 }
 
@@ -346,11 +377,14 @@ body {
   border: 1px solid #ddd; /* Border */
   border-radius: 2rem; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
-  width: calc(25% - 1rem); /* Ensure 4 carts fit in one row */
+  width: 320px; /* Fixed width */
+  height: 300px; /* Fixed height */
   text-align: center; /* Center align text and image */
   padding: 1rem; /* Padding */
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; /* Space below the box */
+  overflow: hidden; /* Prevent content overflow */
 }
+
 
 .product-image {
   width: 100%; /* Full width of the cart */
@@ -1143,4 +1177,10 @@ p {
   to {
     opacity: 1;
   }
+}
+.circle-on-center-box img {
+  border-radius: 50%;
+  height: 17.5rem;  /* Make sure height and width are equal */
+  width: 18.5rem;   /* This ensures the image is a perfect circle */
+  object-fit: cover;  /* Ensures the image covers the whole circle without distortion */
 }
