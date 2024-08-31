@@ -19,7 +19,10 @@ import Shoee4 from './assets/shoee4.png';
 import Shoee5 from './assets/shoee5.png';
 import Shoee6 from './assets/shoee6.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'aos/dist/aos.css'; // Import AOS CSS
+import AOS from 'aos'; // Import AOS JavaScript
 import './App.css'; // Assuming your CSS is in App.css
+
 
 function ShopPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,12 +31,8 @@ function ShopPage() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedColor, setSelectedColor] = useState(''); // Default no color selected
 
- 
-
   useEffect(() => {
-    // Fetch products from an API or other source
     const fetchProducts = async () => {
-      // Example: Replace with actual API call or static data
       const productList = [
         { id: 1, name: 'brown Shoe', price: 99.99, image: Shoee1, colors: ['red', 'blue', 'black'] },
         { id: 2, name: 'red Shoe', price: 89.99, image: Shoee2, colors: ['red', 'blue', 'black'] },
@@ -41,13 +40,21 @@ function ShopPage() {
         { id: 4, name: 'blue Shoe', price: 89.99, image: Shoee4, colors: ['red', 'blue', 'black'] },
         { id: 5, name: 'green Shoe', price: 89.99, image: Shoee5, colors: ['red', 'blue', 'black'] },
         { id: 6, name: 'black Shoe', price: 89.99, image: Shoee6, colors: ['red', 'blue', 'black'] },
-      
-        // Add more products here
       ];
       setProducts(productList);
+
+      
     };
 
     fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 200,
+    });
   }, []);
 
   useEffect(() => {
@@ -63,23 +70,28 @@ function ShopPage() {
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
-    setSelectedColor(product.colors[0]); // Set the first available color as the default
+    setSelectedColor(product.colors[0,1,2,3,4,5]); // Set the first available color as the default
   };
-
+  
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
   };
-
+  
+  const handleSmallBoxClick = (color) => {
+    setSelectedColor(color);
+  };
+  
   const getColorImage = (color, product) => {
+    // Ensure each color has a specific image
     switch (color) {
       case 'red':
-        return Shoee2; // Assuming Shoee2 is the red shoe image
+        return Shoee2; // Replace with the specific image for red
       case 'blue':
-        return Shoee4; // Assuming Shoee4 is the blue shoe image
+        return Shoee4; // Replace with the specific image for blue
       case 'black':
-        return Shoee6; // Assuming Shoee6 is the black shoe image
+        return Shoee6; // Replace with the specific image for black
       default:
-        return product.image;
+        return product.image; // Return default product image
     }
   };
 
@@ -102,73 +114,81 @@ function ShopPage() {
         </div>
         
         {/* The rest of your component code remains unchanged */}
-        <div className='overall-price'></div>
-        <div className="box-in-center-box">
-          <h1>Product Details</h1>
-          <div id='change-product' className='d-flex align-items-center'>
-            <img src={LeftArrow} alt="Previous" className="img-fluid" style={{ width: '20px', height: 'auto', marginRight: '8px' }} />
+        <div className='overall-price' ></div>
+        <div className="box-in-center-box" >
+          <h1 data-aos="fade-up">Product Details</h1>
+          <div data-aos="fade-up" id='change-product' className='d-flex align-items-center' >
+            <img  src={LeftArrow} alt="Previous" className="img-fluid" style={{ width: '20px', height: 'auto', marginRight: '8px' }} />
             <h6 className='m-0'>Next Product</h6>
             <img src={RightArrow} alt="Next" className="img-fluid" style={{ width: '20px', height: 'auto', marginLeft: '8px' }} />
           </div>
 
-          <div className='box-on-center-box'>
-            <div className='box-on-center-box-ColorSelection'>
-            <div className="color-selection-container">
-             <p style={{ marginBottom: '.5rem' }}>Color :</p>
-                <div className="color-options">
-                  {selectedProduct && selectedProduct.colors.map(color => (
-                    <label key={color}>
-                      <input
-                        type="radio"
-                        name="color"
-                        value={color}
-                        checked={selectedColor === color}
-                        onChange={handleColorChange}
-                      />
-                      <span className="color-circle" style={{ backgroundColor: color }}></span>
-                    </label>
-                  ))}
-                </div>
-                <div className="show-size">
-                  <p>Size :</p>
-                  <div className="size-buttons">
-                    <div className='upper-size-button'>
-                      <button>37</button>
-                      <button>38</button>
-                      <button>39</button>
-                    </div>
+          <div className='box-on-center-box' >
+            {selectedProduct && (
+              <div  className='box-on-center-box-ColorSelection'>
+                <div data-aos="fade-up" className="color-selection-container">
+                  <p data-aos="fade-up" style={{ marginBottom: '.5rem' }}>Color :</p>
+                  <div className="color-options">
+                    {selectedProduct.colors.map(color => (
+                      <label key={color}>
+                        <input
+                          type="radio"
+                          name="color"
+                          value={color}
+                          checked={selectedColor === color}
+                          onChange={handleColorChange}
+                        />
+                        <span className="color-circle" style={{ backgroundColor: color }}></span>
+                      </label>
+                    ))}
+                  </div>
+                  <div className="show-size">
+                    <p>Size :</p>
+                    <div className="size-buttons">
+                      <div className='upper-size-button'>
+                        <button>37</button>
+                        <button>38</button>
+                        <button>39</button>
+                      </div>
 
-                    <div className='lower-size-button'>
-                      <button>40</button>
-                      <button>41</button>
-                      <button>42</button>
+                      <div className='lower-size-button'>
+                        <button>40</button>
+                        <button>41</button>
+                        <button>42</button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <button className='add-to-cart-btn'>Add to Cart</button>
+            )}
+            {selectedProduct && (
+              <button data-aos="fade-up" className='add-to-cart-btn'>Add to Cart</button>
+            )}
             <div className='circle-on-center-box'>
-            {selectedProduct ? (
-                <img src={getColorImage(selectedColor, selectedProduct)} alt={selectedProduct.name} className="product-image" />
+              {selectedProduct ? (
+                <img data-aos="fade-up" src={getColorImage(selectedColor, selectedProduct)} alt={selectedProduct.name} className="product-image" />
               ) : (
-                <p>Select a product</p>
+                <p data-aos="fade-up">Select a product</p>
               )}
             </div>
-           
-            
-             {selectedProduct && (
-              <div className="bottom-left-boxes">
-                <div className="small-box red-shoes" onClick={() => setSelectedColor('red')}></div>
-                <div className="small-box blue-shoes" onClick={() => setSelectedColor('blue')}></div>
-                <div className="small-box black-shoes" onClick={() => setSelectedColor('black')}></div>
+            {selectedProduct && (
+              <div data-aos="fade-up" className="bottom-left-boxes">
+                {selectedProduct.colors.map(color => (
+                  <div 
+                    key={color}
+                    className={`small-box ${color}-shoes`} 
+                    style={{ backgroundColor: color }}
+                    onClick={() => handleSmallBoxClick(color)}
+                  ></div>
+                ))}
               </div>
             )}
           </div>
+
           <div className='related-products'>
-            <h2>Related Products</h2>
-            <div className='product-carts'>
-            {filteredProducts.length > 0 ? (
+            <h2 >Related Products</h2>
+            <div  className='product-carts'>
+              {filteredProducts.length > 0 ? (
                 filteredProducts.map(product => (
                   <div
                     key={product.id}
@@ -185,14 +205,12 @@ function ShopPage() {
               ) : (
                 <p>No products found.</p>
               )}
-            
-              
             </div>
           </div>
     
         </div>
 
-        <div className="footer">
+        <div className="footer" style={{top:'100rem'}}>
   <div className="footer-content">
   <div className="recent-posts">
       <h3>Recent Blog Posts</h3>
