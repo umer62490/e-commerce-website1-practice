@@ -88,7 +88,7 @@ function HomePage() {
         <div className='main-text' data-aos="fade-up">
           <div className='main-txt' ref={textRef} style={{ opacity: textInView ? 1 : 0, transition: 'opacity 0.5s ease-out' }}>
             <h1>
-              Welcome to 
+              Welcome to &nbsp;
               <span className='main-txt-word'>S</span>
               <span className='main-txt-word'>h</span>
               <span className='main-txt-word'>o</span>
@@ -102,7 +102,7 @@ function HomePage() {
               Explore our curated selection of top-quality products. Find the latest trends, unique items, and great deals, all in one place. Happy shopping!
             </p>
           </div>
-          <div className='main-img' data-aos="zoom-in">
+          <div className='main-img'>
             <img src={MainShoe} alt="Main Shoe" />
           </div>
         </div>

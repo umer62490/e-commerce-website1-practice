@@ -1039,73 +1039,94 @@ h1 .main-txt-word:nth-child(8) {
 
 /*----------------------------------------------------------------------------------------------------contact us page*/
 .form-container {
-  margin-top:8rem;
-  padding: 16px;
+  margin-top: 8rem;
+  padding: 24px; /* Increased padding for a better feel */
   background: linear-gradient(135deg, #f1a655, white, #f9d29d, #f1a655);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 30rem;
+  border-radius: 12px; /* Increased border-radius for smoother edges */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Darker shadow for more depth */
+  width: 80rem; /* Increased width */
+  max-width: 100%; /* Ensures responsiveness on smaller screens */
 }
 
 .form-control {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .form-label {
   font-weight: bold;
+  color: #ff7043;
 }
 
-.form-input {
-  border-radius: 4px;
-  border: 1px solid orange;
-  padding: 8px;
+.form-input,
+.form-textarea {
+  border-radius: 8px;
+  border: 2px solid #e59430;
+  padding: 0.75rem;
   width: 100%;
+  transition: border-color 0.3s ease;
 }
 
-
-.form-input:focus {
-  border-color: orange;
-  box-shadow: 0 0 0 1px orange;
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #e59430;
+  box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.3);
 }
 
 .form-textarea {
-  border-radius: 4px;
-  border: 1px solid orange;
-  padding: 8px;
-  width: 100%;
-  min-height: 100px;
-}
-
-
-.form-textarea:focus {
-  border-color: orange;
-  box-shadow: 0 0 0 1px orange;
+  min-height: 150px;
 }
 
 .form-error {
   color: #e53e3e;
-  margin-top: 4px;
+  margin-top: 0.5rem;
 }
 
 .submit-button {
-  background-color: #f6ad55;
+  background-color: #e59430;
   color: white;
-  border-radius: 4px;
-  padding: 12px;
+  border-radius: 8px;
+  padding: 1rem;
   width: 100%;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
   border: none;
   cursor: pointer;
 }
 
 .submit-button:hover {
-  background-color: #ed8936;
+  background-color: black;
 }
 
 .submit-button:focus {
-  box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.5);
 }
 
 
+.left-lamp,
+.right-lamp {
+  position: absolute;
+  top: 50%;
+  width: 5rem; /* Adjust width as needed */
+  height: auto;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.left-lamp {
+  
+  left: 0;
+  margin-left: 1.6rem; /* Adjust based on lamp width */
+  width: 20rem;
+  height: 35rem;
+  
+}
+
+.right-lamp {
+  right: 0;
+  margin-right: 1.6rem; /* Adjust based on lamp width */
+  width: 20rem;
+  height: 35rem;
+}
 /*-------------about us---------------------------------------------------------------------------*/
 .about-us-content {
   position: absolute;

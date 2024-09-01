@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { Button, FormControl, FormLabel, Input, Textarea, Text, useToast } from '@chakra-ui/react';
 import Amex from './assets/amex.png';
 import Mastercard from './assets/mastercard.png';
 import Paypal from './assets/paypal.png';
 import Visa from './assets/visa card.png';
-import SSL from  './assets/ssl badge.jpeg';
+import SSL from './assets/ssl badge.jpeg';
 import SecurePayment from './assets/secure payment.jpeg';
 import PaymentGateway from './assets/payment gateway.png';
-import './App.css'; 
+import LeftLamp from './assets/left-lamp.png';
+import RightLamp from './assets/right-lamp.png';
+import 'aos/dist/aos.css'; // Import AOS CSS
+import AOS from 'aos'; // Import AOS JavaScript
+import './App.css';
+
+
 
 function ContactUsPage() {
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -44,6 +49,16 @@ function ContactUsPage() {
     return valid;
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 200,
+    });
+  }, []);
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -62,7 +77,7 @@ function ContactUsPage() {
         if (response.ok) {
           toast({
             title: 'Message submitted.',
-            description: "Your message has been successfully submitted.",
+            description: 'Your message has been successfully submitted.',
             status: 'success',
             duration: 5000,
             isClosable: true,
@@ -92,64 +107,76 @@ function ContactUsPage() {
       }
     }
   };
+
   return (
-    <div className="background-wrapper">
+    <div className="background-wrapper ">
+      
       <div className="centered-box">
-        <div className='main-logo'>
+      <img data-aos="fade-up" src={LeftLamp} alt="Left Lamp" className="left-lamp" />
+      <img data-aos="fade-up" src={RightLamp} alt="Right Lamp" className="right-lamp" />
+        <div className="main-logo">
           <h1>ShoeShop</h1>
         </div>
-        <div className='header-options' style={{ marginTop:'1rem' , marginRight: '15rem' }}>
+        <div className="header-options" style={{ marginTop: '1rem', marginRight: '15rem' }}>
+
+      
           <Link to="/">Home</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/contact-us">Contact Us</Link>
           <Link to="/about-us">About Us</Link>
           <Link to="/account">Account</Link>
-         
         </div>
+        
+        <form  sclassName="form-container" style={{ width: '60rem' }} onSubmit={handleSubmit}>
+       
+  <FormControl style={{
+        background: 'linear-gradient(135deg, #f1a655, #f9d29d, #f1a655)', // Removed white color
+      }} id="name" isInvalid={!!errors.name} className="form-control">
+    <FormLabel className="form-label">Name</FormLabel>
+    <Input
+      
+      type="text"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      placeholder="Enter your name"
+      className="form-input"
+    />
+    {errors.name && <Text className="form-error">{errors.name}</Text>}
+  </FormControl>
 
-        <form className='form-container' onSubmit={handleSubmit}>
-        <FormControl id="name" isInvalid={!!errors.name} className="form-control">
-          <FormLabel className="form-label">Name</FormLabel>
-          <Input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
-            className="form-input"
-          />
-          {errors.name && <Text className="form-error">{errors.name}</Text>}
-        </FormControl>
 
-        <FormControl id="email" isInvalid={!!errors.email} className="form-control">
-          <FormLabel className="form-label">Email</FormLabel>
-          <Input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            className="form-input"
-          />
-          {errors.email && <Text className="form-error">{errors.email}</Text>}
-        </FormControl>
+          <FormControl style={{
+        background: 'linear-gradient(135deg, #f1a655, #f9d29d, #f1a655)', // Removed white color
+      }} id="email" isInvalid={!!errors.email} className="form-control">
+            <FormLabel className="form-label">Email</FormLabel>
+            <Input
+            
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="form-input"
+            />
+            {errors.email && <Text className="form-error">{errors.email}</Text>}
+          </FormControl>
 
-        <FormControl id="message" isInvalid={!!errors.message} className="form-control">
-          <FormLabel className="form-label">Message</FormLabel>
-          <Textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Enter your message"
-            className="form-textarea"
-          />
-          {errors.message && <Text className="form-error">{errors.message}</Text>}
-        </FormControl>
+          <FormControl style={{
+        background: 'linear-gradient(135deg, #f1a655, #f9d29d, #f1a655)', // Removed white color
+      }} id="message" isInvalid={!!errors.message} className="form-control">
+            <FormLabel className="form-label">Message</FormLabel>
+            <Textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Enter your message"
+              className="form-textarea"
+            />
+            {errors.message && <Text className="form-error">{errors.message}</Text>}
+          </FormControl>
 
-        <Button 
-          type="submit" 
-          className="submit-button"
-        >
-          Submit
-        </Button>
-      </form>
+          <Button type="submit" className="submit-button">
+            Submit
+          </Button>
+        </form>
 
         <div className="footer" style={{marginTop:'-120rem'}}>
   <div className="footer-content">
