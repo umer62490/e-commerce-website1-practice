@@ -14,6 +14,8 @@ import Visa from './assets/visa card.png';
 import SSL from './assets/ssl badge.jpeg';
 import SecurePayment from './assets/secure payment.jpeg';
 import PaymentGateway from './assets/payment gateway.png';
+import 'aos/dist/aos.css'; // Import AOS CSS
+import AOS from 'aos'; // Import AOS JavaScript
 import './App.css'; 
 
 const teamPhotos = [
@@ -40,6 +42,15 @@ function TeamCarousel() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 200,
+    });
+  }, []);
+
+
   return (
     <div className="team-carousel">
       <img src={teamPhotos[currentIndex]} alt="Team Member" className="team-photo" />
@@ -64,22 +75,22 @@ function AboutUsPage() {
 
         <div className="about-us-content">
           <section className="company-history">
-            <h2>Our History</h2>
-            <p>
-              ShoeShop was founded in 2024 with a passion for providing high-quality footwear that combines style and comfort. Over the years, we have grown from a small boutique into a leading eCommerce platform, serving customers worldwide with our diverse range of products.
+            <h2 data-aos="fade-up">Our History</h2>
+            <p data-aos="fade-up">
+              <strong>ShoeShop</strong> was founded in <strong>2024</strong> with a passion for providing high-quality footwear that combines style and comfort. Over the years, we have grown from a small boutique into a leading eCommerce platform, serving customers worldwide with our diverse range of products.
             </p>
           </section>
 
           <section className="vision-mission-values">
             <div className="vision">
-              <h2>Our Vision</h2>
-              <p>
+              <h2 data-aos="fade-up">Our Vision</h2>
+              <p data-aos="fade-up">
                 Our vision is to become the go-to destination for footwear enthusiasts by offering a seamless shopping experience, innovative designs, and unparalleled customer service.
               </p>
             </div>
 
-            <div className="mission">
-              <h2>Our Mission</h2>
+            <div className="mission" >
+              <h2 >Our Mission</h2>
               <p>
                 Our mission is to deliver exceptional value to our customers through a curated selection of high-quality shoes that meet the latest fashion trends and comfort needs. We aim to build lasting relationships with our customers by consistently exceeding their expectations.
               </p>
@@ -103,7 +114,7 @@ function AboutUsPage() {
           <TeamCarousel />
           <div className="team-info">
             <h3>Muhammad Umar</h3>
-            <p><span>Role:</span> I'm developing this website where I apply React.js with Redux for frontend, and Bootstrap with Chakra UI for styling. For the backend, I use Node.js, Express.js, and MongoDB for the database.</p>
+            <p><span>Role:</span> I'm developing this website where I apply <strong>React.js</strong> with <strong>Redux</strong> for frontend, and <strong>Bootstrap</strong> with <strong>Chakra UI</strong> for styling. For the backend, I use <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>MongoDB</strong> for the database.</p>
           </div>
         </section>
 

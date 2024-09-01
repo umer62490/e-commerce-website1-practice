@@ -40,6 +40,7 @@ body {
   align-items: center;
   border-radius: 5rem;
   position: relative;
+  z-index: 0;
 }
 
 /* Scrollbar Track */
@@ -69,6 +70,7 @@ body {
   position: absolute;
   top: 2rem; /* Position close to the top */
   left: 8rem; /* Position close to the left */
+  z-index: 2;
 }
 
 .main-logo h1 {
@@ -1290,6 +1292,7 @@ h1 .main-txt-word:nth-child(8) {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 350px;
   max-width: 100%;
+  z-index: 2;
 }
 
 h2 {
@@ -1366,4 +1369,22 @@ p {
   height: 17.5rem;  /* Make sure height and width are equal */
   width: 18.5rem;   /* This ensures the image is a perfect circle */
   object-fit: cover;  /* Ensures the image covers the whole circle without distortion */
+}
+
+/* Add this to your App.css or the relevant CSS file */
+.left-spider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Lower z-index to keep the spider below the text */
+  width: 55rem; /* Adjust as needed */
+}
+
+
+.right-spider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1; /* Ensure it's on top of other elements */
+  width: 55rem; /* Adjust as needed */
 }

@@ -8,6 +8,8 @@ import Visa from './assets/visa card.png';
 import SSL from './assets/ssl badge.jpeg';
 import SecurePayment from './assets/secure payment.jpeg';
 import PaymentGateway from './assets/payment gateway.png';
+import LeftSpider from './assets/left-spider.png';
+import RightSpider from './assets/right-spider.png';
 import './App.css'; 
 
 function AccountPage() {
@@ -59,7 +61,10 @@ function AccountPage() {
 
   return (
     <div className="background-wrapper">
+      
       <div className="centered-box">
+      <img src={LeftSpider} alt="Left Spider" className="left-spider" />
+      <img src={RightSpider} alt="Right Spider" className="right-spider" />
         <div className='main-logo'>
           <h1>ShoeShop</h1>
         </div>

@@ -132,7 +132,7 @@ function ContactUsPage() {
   <FormControl style={{
         background: 'linear-gradient(135deg, #f1a655, #f9d29d, #f1a655)', // Removed white color
       }} id="name" isInvalid={!!errors.name} className="form-control">
-    <FormLabel className="form-label">Name</FormLabel>
+    <FormLabel style={{color:'black'}} className="form-label">Name</FormLabel>
     <Input
       
       type="text"
@@ -148,7 +148,7 @@ function ContactUsPage() {
           <FormControl style={{
         background: 'linear-gradient(135deg, #f1a655, #f9d29d, #f1a655)', // Removed white color
       }} id="email" isInvalid={!!errors.email} className="form-control">
-            <FormLabel className="form-label">Email</FormLabel>
+            <FormLabel  style={{color:'black'}} className="form-label">Email</FormLabel>
             <Input
             
               type="email"
@@ -163,7 +163,7 @@ function ContactUsPage() {
           <FormControl style={{
         background: 'linear-gradient(135deg, #f1a655, #f9d29d, #f1a655)', // Removed white color
       }} id="message" isInvalid={!!errors.message} className="form-control">
-            <FormLabel className="form-label">Message</FormLabel>
+            <FormLabel  style={{color:'black'}} className="form-label">Message</FormLabel>
             <Textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
