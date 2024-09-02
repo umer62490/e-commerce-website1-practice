@@ -119,7 +119,7 @@ function AboutUsPage() {
         </section>
 
        
-        <div className="footer" style={{marginTop:'-40rem'}}>
+        <div className="footer" style={{marginTop:'-70rem'}}>
           <div className="footer-content">
             <div className="recent-posts">
               <h3>Recent Blog Posts</h3>

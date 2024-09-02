@@ -6,6 +6,7 @@ import ShopPage from './ShopPage';
 import ContactUsPage from './ContactUsPage';
 import AboutUsPage from './AboutUsPage';
 import AccountPage from './AccountPage';
+import CartComponent from './redux/cartComponent';
 import './App.css'; 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/cart" component={CartComponent} />
       </Routes>
     </Router>
   );

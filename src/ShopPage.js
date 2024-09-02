@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';  // Add useEffect here
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './redux/cartActions'; // Adjust based on the actual file path
 import SearchBar from './SearchBar';  // Import the SearchBar component
 import Amex from './assets/amex.png';
 import Mastercard from './assets/mastercard.png';
@@ -29,7 +31,9 @@ function ShopPage() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [selectedColor, setSelectedColor] = useState(''); // Default no color selected
+  const [selectedColor, setSelectedColor] = useState('');
+  const [cartItems, setCartItems] = useState(0); // State for tracking cart items count
+  const dispatch = useDispatch(); // Initialize dispatch
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -95,6 +99,18 @@ function ShopPage() {
     }
   };
 
+ 
+
+  const handleAddToCart = () => {
+    if (selectedProduct) {
+      const productToAdd = { ...selectedProduct, color: selectedColor };
+      dispatch(addToCart(productToAdd)); // Dispatch to add to cart
+      setCartItems(cartItems + 1); // Update the cart item count
+    }
+  };
+
+
+
   return (
     <div className="background-wrapper">
       <div className="centered-box">
@@ -108,7 +124,8 @@ function ShopPage() {
           <Link to="/about-us">About Us</Link>
           <Link to="/account">Account</Link>
           <div className='add-to-cart-icon'>
-            <img src={iconName} alt="Add to Cart" className="cart-icon" />
+            <img src={iconName} alt="Add to Cart" onClick={handleAddToCart} className="cart-icon" />
+          
           </div>
           <SearchBar onSearch={handleSearch} />  {/* Add the SearchBar here */}
         </div>
@@ -162,7 +179,13 @@ function ShopPage() {
               </div>
             )}
             {selectedProduct && (
-              <button data-aos="fade-up" className='add-to-cart-btn'>Add to Cart</button>
+               <button 
+               data-aos="fade-up" 
+               className='add-to-cart-btn' 
+               onClick={handleAddToCart} // Handle add to cart button click
+             >
+               Add to Cart
+             </button>
             )}
             <div className='circle-on-center-box'>
               {selectedProduct ? (

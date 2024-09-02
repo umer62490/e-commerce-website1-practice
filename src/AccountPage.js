@@ -63,8 +63,8 @@ function AccountPage() {
     <div className="background-wrapper">
       
       <div className="centered-box">
-      <img src={LeftSpider} alt="Left Spider" className="left-spider" />
-      <img src={RightSpider} alt="Right Spider" className="right-spider" />
+      <img data-aos="fade-up" src={LeftSpider} alt="Left Spider" className="left-spider" />
+      <img data-aos="fade-up" src={RightSpider} alt="Right Spider" className="right-spider" />
         <div className='main-logo'>
           <h1>ShoeShop</h1>
         </div>
@@ -76,7 +76,7 @@ function AccountPage() {
           <Link to="/account">Account</Link>
           
         </div>
-        <div className="form-container">
+        <div data-aos="fade-up" className="form-container" style={{width:'40rem'}}>
           {!isLogin ? (
             <div className="signup-form">
               <h2>Sign Up</h2>
@@ -156,7 +156,7 @@ function AccountPage() {
           )}
         </div>
 
-        <div className="footer">
+        <div className="footer" style={{marginTop:'-130rem'}}>
           <div className="footer-content">
             <div className="recent-posts">
               <h3>Recent Blog Posts</h3>
